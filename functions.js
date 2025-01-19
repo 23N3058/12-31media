@@ -79,10 +79,11 @@ gsap.utils.toArray('.interview-item').forEach((item) => {
     // 回答のアニメーション
     answers.forEach((answer, index) => {
         tl.from(answer, {
-            y: 30,
+            x: isAlt ? -300 : 300, // Part1は右から、Part2は左からスライドイン
             opacity: 0,
-            duration: 0.4
-        }, `-=0.2`);
+            duration: 0.6,
+            ease: 'power2.out'
+        }, `-=0.3`);
     });
 });
 

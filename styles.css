@@ -171,45 +171,61 @@ body {
 
 /* セクション導入部分のスタイル */
 .section-intro {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 40px;
-    margin: 80px 0;
+    gap: 0;
+    margin: 0;
     opacity: 0;
-    padding: 20px;
+    padding: 0;
     background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.section-intro.right-aligned {
+    position: relative;
+    box-shadow: none;
+    /* デフォルトで画像を右側に配置 */
     flex-direction: row-reverse;
 }
 
-.section-image {
-    flex: 0 0 50%;
-    max-width: 500px;
+.section-intro.right-aligned {
+    /* right-aligned クラスがある場合は画像を左側に配置 */
+    flex-direction: row;
 }
 
+.section-image {
+    flex: 1.5; /* 1から1.5に変更し、画像部分により多くのスペースを割り当て */
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .section-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 120%;
+    height: 120%;
+    object-fit: contain;
+    border-radius: 0;
 }
 
 .section-description {
-    flex: 1;
+    flex: 1; /* section-imageとのバランスを調整 */
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section-description h2 {
-    font-size: 1.8em;
+    font-size: 3em;
     color: #2c3e50;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .section-description p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1.2em;
+    line-height: 1.8;
     color: #666;
 }
 
@@ -346,11 +362,24 @@ body {
     .section-intro,
     .section-intro.right-aligned {
         flex-direction: column;
-        gap: 20px;
+        min-height: 100vh;
     }
 
     .section-image {
-        max-width: 100%;
+        height: 50vh;
+        flex: auto; /* モバイル表示時はflexプロパティをリセット */
+    }
+
+    .section-image img {
+        max-height: 100%;
+    }
+
+    .section-description {
+        padding: 40px 20px;
+    }
+
+    .section-description h2 {
+        font-size: 2.4em;
     }
 
     .questions-container,
